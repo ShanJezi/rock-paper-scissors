@@ -1,4 +1,4 @@
-console.log('Hello World')
+
 
 /* 
 Computer generates a random option to play against user
@@ -8,6 +8,7 @@ Computer generates a random option to play against user
     if 2 choose Scissors
 User is prompted to enter Rock, Paper, or Scissors
     Users entry is made case insensitive
+    Verify user entered a valid option
 User option is compared to Computer option
   Rock beats Scissors
   Scissors beats Paper
@@ -31,7 +32,31 @@ function getComputerChoice() { // Randomly generate computer's choice
 
 const computerSelection = getComputerChoice();
 
+const playerSelection = prompt("Pick Rock, Paper, or Scissors").toUpperCase();
+
+console.log("Player: ", playerSelection);
+console.log("Computer: ",computerSelection);
+
 
 function playRound(playerSelection, computerSelection) {
-
+  if (playerSelection === computerSelection) {
+    return ("Tie")
+  } else if (
+    playerSelection === "ROCK" && computerSelection === "SCISSORS"
+    || playerSelection === "PAPER" && computerSelection === "ROCK"
+    || playerSelection === "SCISSORS" && computerSelection === "PAPER"
+    ) {
+      return (`You win! ${playerSelection} beats ${computerSelection}!`)
+  } else if (
+    playerSelection === "ROCK" && computerSelection === "PAPER"
+    || playerSelection === "PAPER" && computerSelection === "SCISSORS"
+    || playerSelection === "SCISSORS" && computerSelection === "ROCK"
+  ) {
+    return (`You lose! ${computerSelection} beats ${playerSelection}!`)
+  } else {
+    return ('You did not enter a valid option. Try again!')
+  }
 }
+
+console.log(playRound(playerSelection, computerSelection))
+
