@@ -32,12 +32,15 @@ function getComputerChoice() { // Randomly generate computer's choice
 
 const computerSelection = getComputerChoice();
 
+// Gets player selection and converts to uppercase
 const playerSelection = prompt("Pick Rock, Paper, or Scissors").toUpperCase();
 
 console.log("Player: ", playerSelection);
 console.log("Computer: ",computerSelection);
 
 
+
+// player selection and computer selection are compared and a winner is declared for that round
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return ("Tie")
@@ -60,3 +63,8 @@ function playRound(playerSelection, computerSelection) {
 
 console.log(playRound(playerSelection, computerSelection))
 
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playRound(playerSelection, computerSelection);
+  }
+}
