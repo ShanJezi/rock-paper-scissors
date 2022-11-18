@@ -16,6 +16,11 @@ User option is compared to Computer option
   Computer and User pick same option results in a tie
 Winner is declared for that round
 Best of 5
+  Create game function
+  Keep track of player score and computer score
+  insert playRound function into game function
+  Repeat playRound until player or computer score is 5
+  Declare game winner
 
 */
 
@@ -30,13 +35,7 @@ function getComputerChoice() { // Randomly generate computer's choice
   }
 }
 
-const computerSelection = getComputerChoice();
 
-// Gets player selection and converts to uppercase
-const playerSelection = prompt("Pick Rock, Paper, or Scissors").toUpperCase();
-
-console.log("Player: ", playerSelection);
-console.log("Computer: ",computerSelection);
 
 
 
@@ -61,10 +60,24 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-console.log(playRound(playerSelection, computerSelection))
 
-function game() {
-  for (let i = 0; i < 5; i++) {
+
+function game() { 
+  let playerScore = 0;
+  let computerScore = 0;
+  
+  for (let i = 0; i < 5; i++) { // play 5 rounds
+    // Get new computer selection each round
+    const computerSelection = getComputerChoice();
+    // Get new player selection and convert to uppercase
+    const playerSelection = prompt("Pick Rock, Paper, or Scissors", '').toUpperCase();
+    console.log("Player: ", playerSelection);
+    console.log("Computer: ",computerSelection);
+
     playRound(playerSelection, computerSelection);
+    console.log(playRound(playerSelection, computerSelection))
   }
 }
+
+game()
+
