@@ -38,23 +38,25 @@ function getComputerChoice() { // Randomly generate computer's choice
 
 
 
-
 // player selection and computer selection are compared and a winner is declared for that round
 function playRound(playerSelection, computerSelection) {
+  const playerWin = (`You win! ${playerSelection} beats ${computerSelection}!`);
+  const playerLose = (`You lose! ${computerSelection} beats ${playerSelection}!`);
+  const tie = ("Tie!")
   if (playerSelection === computerSelection) {
-    return ("Tie")
+    return (tie)
   } else if (
     playerSelection === "ROCK" && computerSelection === "SCISSORS"
     || playerSelection === "PAPER" && computerSelection === "ROCK"
     || playerSelection === "SCISSORS" && computerSelection === "PAPER"
     ) {
-      return (`You win! ${playerSelection} beats ${computerSelection}!`)
+      return (playerWin)
   } else if (
     playerSelection === "ROCK" && computerSelection === "PAPER"
     || playerSelection === "PAPER" && computerSelection === "SCISSORS"
     || playerSelection === "SCISSORS" && computerSelection === "ROCK"
   ) {
-    return (`You lose! ${computerSelection} beats ${playerSelection}!`)
+    return (playerLose)
   } else {
     return ('You did not enter a valid option. Try again!')
   }
@@ -65,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
 function game() { 
   let playerScore = 0;
   let computerScore = 0;
-  
+
   for (let i = 0; i < 5; i++) { // play 5 rounds
     // Get new computer selection each round
     const computerSelection = getComputerChoice();
@@ -75,7 +77,10 @@ function game() {
     console.log("Computer: ",computerSelection);
 
     playRound(playerSelection, computerSelection);
-    console.log(playRound(playerSelection, computerSelection))
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(roundResult)
+    console.log(playerScore);
+    console.log(computerScore);
   }
 }
 
