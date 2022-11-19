@@ -36,37 +36,10 @@ function getComputerChoice() { // Randomly generate computer's choice
 }
 
 
-
-
-// player selection and computer selection are compared and a winner is declared for that round
-function playRound(playerSelection, computerSelection) {
-  const playerWin = (`You win! ${playerSelection} beats ${computerSelection}!`);
-  const playerLose = (`You lose! ${computerSelection} beats ${playerSelection}!`);
-  const tie = ("Tie!")
-  if (playerSelection === computerSelection) {
-    return (tie)
-  } else if (
-    playerSelection === "ROCK" && computerSelection === "SCISSORS"
-    || playerSelection === "PAPER" && computerSelection === "ROCK"
-    || playerSelection === "SCISSORS" && computerSelection === "PAPER"
-    ) {
-      return (playerWin)
-  } else if (
-    playerSelection === "ROCK" && computerSelection === "PAPER"
-    || playerSelection === "PAPER" && computerSelection === "SCISSORS"
-    || playerSelection === "SCISSORS" && computerSelection === "ROCK"
-  ) {
-    return (playerLose)
-  } else {
-    return ('You did not enter a valid option. Try again!')
-  }
-}
-
-
-
 function game() { 
   let playerScore = 0;
   let computerScore = 0;
+  
 
   for (let i = 0; i < 5; i++) { // play 5 rounds
     // Get new computer selection each round
@@ -76,17 +49,38 @@ function game() {
     console.log("Player: ", playerSelection);
     console.log("Computer: ",computerSelection);
 
+    // player selection and computer selection are compared and a winner is declared for that round
+    function playRound(playerSelection, computerSelection) {
+      const playerWin = (`You win! ${playerSelection} beats ${computerSelection}!`);
+      const playerLose = (`You lose! ${computerSelection} beats ${playerSelection}!`);
+      const tie = ("Tie!");
+      let result;
+      if (playerSelection === computerSelection) {
+        result = tie
+      } else if (
+        playerSelection === "ROCK" && computerSelection === "SCISSORS"
+        || playerSelection === "PAPER" && computerSelection === "ROCK"
+        || playerSelection === "SCISSORS" && computerSelection === "PAPER"
+        ) {
+          result = playerWin;
+          playerScore++;
+      } else if (
+        playerSelection === "ROCK" && computerSelection === "PAPER"
+        || playerSelection === "PAPER" && computerSelection === "SCISSORS"
+        || playerSelection === "SCISSORS" && computerSelection === "ROCK"
+      ) {
+        result = playerLose;
+        computerScore++;
+      } else {
+        result = ('You did not enter a valid option. Try again!')
+      }
+      return result;
+    }
 
-    playRound(playerSelection, computerSelection);
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult)
-
-    if (roundResult = playerWin) {
-      playerScore += 1;
-    }
-    
-    console.log(playerScore);
-    console.log(computerScore);
+    console.log('Player: ', playerScore);
+    console.log('Computer: ', computerScore);
   }
 }
 
