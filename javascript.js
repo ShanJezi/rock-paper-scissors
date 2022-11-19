@@ -76,9 +76,15 @@ function game() {
     console.log("Player: ", playerSelection);
     console.log("Computer: ",computerSelection);
 
+
     playRound(playerSelection, computerSelection);
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult)
+
+    if (roundResult = playerWin) {
+      playerScore += 1;
+    }
+    
     console.log(playerScore);
     console.log(computerScore);
   }
