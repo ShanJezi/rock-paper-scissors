@@ -19,7 +19,8 @@ Best of 5
   Create game function
   Keep track of player score and computer score
   insert playRound function into game function
-  Repeat playRound until player or computer score is 5
+  Repeat playRound for 5 rounds
+  compare final scores
   Declare game winner
 
 */
@@ -86,7 +87,8 @@ function game() {
 }
 
 game();
-let finalResult;
+
+let finalResult; // compare final scores from the 5 rounds and declare a winner
 if (playerScore > computerScore) {
   finalResult = `You won a total of ${playerScore} rounds to win the game! Take that computer!`
 } else if (playerScore < computerScore) {
