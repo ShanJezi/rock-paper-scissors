@@ -35,10 +35,10 @@ function getComputerChoice() { // Randomly generate computer's choice
   }
 }
 
+let playerScore = 0;
+let computerScore = 0;
 
 function game() { 
-  let playerScore = 0;
-  let computerScore = 0;
   
 
   for (let i = 0; i < 5; i++) { // play 5 rounds
@@ -49,11 +49,11 @@ function game() {
     console.log("Player: ", playerSelection);
     console.log("Computer: ",computerSelection);
 
-    // player selection and computer selection are compared and a winner is declared for that round
+    // player selection and computer selection are compared and a winner is declared for that round, score is increased
     function playRound(playerSelection, computerSelection) {
-      const playerWin = (`You win! ${playerSelection} beats ${computerSelection}!`);
-      const playerLose = (`You lose! ${computerSelection} beats ${playerSelection}!`);
-      const tie = ("Tie!");
+      const playerWin = (`You win this round! ${playerSelection} beats ${computerSelection}!`);
+      const playerLose = (`You lose this round! ${computerSelection} beats ${playerSelection}!`);
+      const tie = (`This round is a tie! ${playerSelection} and ${computerSelection} are an even match!`);
       let result;
       if (playerSelection === computerSelection) {
         result = tie
@@ -63,14 +63,14 @@ function game() {
         || playerSelection === "SCISSORS" && computerSelection === "PAPER"
         ) {
           result = playerWin;
-          playerScore++;
+          playerScore++; // increase playerScore by 1
       } else if (
         playerSelection === "ROCK" && computerSelection === "PAPER"
         || playerSelection === "PAPER" && computerSelection === "SCISSORS"
         || playerSelection === "SCISSORS" && computerSelection === "ROCK"
       ) {
         result = playerLose;
-        computerScore++;
+        computerScore++; // increase computerScore by 1
       } else {
         result = ('You did not enter a valid option. Try again!')
       }
@@ -82,7 +82,16 @@ function game() {
     console.log('Player: ', playerScore);
     console.log('Computer: ', computerScore);
   }
+
 }
 
-game()
-
+game();
+let finalResult;
+if (playerScore > computerScore) {
+  finalResult = `You won a total of ${playerScore} rounds to win the game! Take that computer!`
+} else if (playerScore < computerScore) {
+  finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`
+} else {
+  finalResult = `Tie game! You and the computer both won ${playerScore} rounds. So close!`
+}
+console.log(finalResult);
