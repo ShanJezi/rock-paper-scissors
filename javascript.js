@@ -1,4 +1,3 @@
-// Git push test
 
 /* 
 Computer generates a random option to play against user
@@ -36,47 +35,57 @@ function getComputerChoice() { // Randomly generate computer's choice
   }
 }
 
+
+
 let playerScore = 0;
 let computerScore = 0;
+
+const computerSelection = getComputerChoice();
+let playerSelection;
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', playRound((button.id).toUpperCase(), computerSelection));
+})
+
+function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
+  const playerWin = (`You win this round! ${playerSelection} beats ${computerSelection}!`);
+  const playerLose = (`You lose this round! ${computerSelection} beats ${playerSelection}!`);
+  const tie = (`This round is a tie! ${playerSelection} and ${computerSelection} are an even match!`);
+  let result;
+  if (playerSelection === computerSelection) {
+    result = tie
+  } else if (
+    playerSelection === "ROCK" && computerSelection === "SCISSORS"
+    || playerSelection === "PAPER" && computerSelection === "ROCK"
+    || playerSelection === "SCISSORS" && computerSelection === "PAPER"
+    ) {
+      result = playerWin;
+      playerScore++; // increase playerScore by 1
+  } else if (
+    playerSelection === "ROCK" && computerSelection === "PAPER"
+    || playerSelection === "PAPER" && computerSelection === "SCISSORS"
+    || playerSelection === "SCISSORS" && computerSelection === "ROCK"
+  ) {
+    result = playerLose;
+    computerScore++; // increase computerScore by 1
+  } else {
+    result = ('You did not enter a valid option. Try again!')
+  }
+  return result;
+}
+
 
 function game() { 
   
 
-  for (let i = 0; i < 5; i++) { // play 5 rounds
-    // Get new computer selection each round
-    const computerSelection = getComputerChoice();
-    // Get new player selection and convert to uppercase
-    const playerSelection = prompt("Pick Rock, Paper, or Scissors", '').toUpperCase();
+ // for (let i = 0; i < 5; i++) { // play 5 rounds
+
     console.log("Player: ", playerSelection);
     console.log("Computer: ",computerSelection);
 
-    // player selection and computer selection are compared and a winner is declared for that round, score is increased
-    function playRound(playerSelection, computerSelection) {
-      const playerWin = (`You win this round! ${playerSelection} beats ${computerSelection}!`);
-      const playerLose = (`You lose this round! ${computerSelection} beats ${playerSelection}!`);
-      const tie = (`This round is a tie! ${playerSelection} and ${computerSelection} are an even match!`);
-      let result;
-      if (playerSelection === computerSelection) {
-        result = tie
-      } else if (
-        playerSelection === "ROCK" && computerSelection === "SCISSORS"
-        || playerSelection === "PAPER" && computerSelection === "ROCK"
-        || playerSelection === "SCISSORS" && computerSelection === "PAPER"
-        ) {
-          result = playerWin;
-          playerScore++; // increase playerScore by 1
-      } else if (
-        playerSelection === "ROCK" && computerSelection === "PAPER"
-        || playerSelection === "PAPER" && computerSelection === "SCISSORS"
-        || playerSelection === "SCISSORS" && computerSelection === "ROCK"
-      ) {
-        result = playerLose;
-        computerScore++; // increase computerScore by 1
-      } else {
-        result = ('You did not enter a valid option. Try again!')
-      }
-      return result;
-    }
+  playRound();
 
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult)
@@ -84,7 +93,7 @@ function game() {
     console.log('Computer: ', computerScore);
   }
 
-}
+//}
 
 game();
 
