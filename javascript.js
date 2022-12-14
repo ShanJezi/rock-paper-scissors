@@ -21,16 +21,18 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    console.log(button);
+    playerSelection = button.id.toUpperCase();
+    computerSelection = getComputerChoice();
+    console.log(`Player chooses ${playerSelection}`);
+    console.log(`Computer chooses ${computerSelection}`);
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(roundResult)
+    console.log('Player: ', playerScore);
+    console.log('Computer: ', computerScore);
   })
 })
 
-function game() { 
-  
-
- // for (let i = 0; i < 5; i++) { // play 5 rounds
-
- function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
+function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
   const playerWin = (`You win this round! ${playerSelection} beats ${computerSelection}!`);
   const playerLose = (`You lose this round! ${computerSelection} beats ${playerSelection}!`);
   const tie = (`This round is a tie! ${playerSelection} and ${computerSelection} are an even match!`);
@@ -55,22 +57,10 @@ function game() {
     result = ('You did not enter a valid option. Try again!')
   }
   return result;
+
 }
 
-    console.log("Player: ", playerSelection);
-    console.log("Computer: ",computerSelection);
 
-  playRound();
-
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult)
-    console.log('Player: ', playerScore);
-    console.log('Computer: ', computerScore);
-  }
-
-//}
-
-//game();
 
 let finalResult; // compare final scores from the 5 rounds and declare a winner
 if (playerScore > computerScore) {
