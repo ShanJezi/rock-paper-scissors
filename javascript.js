@@ -19,19 +19,17 @@ let computerScore = 0;
 
 const buttons = document.querySelectorAll('button');
 
+const playerChoiceDisplay = document.querySelector('.playerChoice');
+const computerChoiceDisplay = document.querySelector('.computerChoice');
+const roundResultDisplay = document.querySelector('.roundResult');
 const playerScoreDisplay = document.querySelector('.playerScore');
-const computerScoreDisplay = document.querySelector('.computerScore')
+const computerScoreDisplay = document.querySelector('.computerScore');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     playerSelection = button.id.toUpperCase();
     computerSelection = getComputerChoice();
-    console.log(`Player chooses ${playerSelection}`);
-    console.log(`Computer chooses ${computerSelection}`);
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log(roundResult)
-    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
-    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    playRound(playerSelection, computerSelection);
   })
 })
 
@@ -59,8 +57,11 @@ function playRound(playerSelection, computerSelection) {// player selection and 
   } else {
     result = ('You did not enter a valid option. Try again!')
   }
-  return result;
-
+  playerChoiceDisplay.textContent = `Player chooses ${playerSelection}`;
+  computerChoiceDisplay.textContent = `Computer chooses ${computerSelection}`;
+  roundResultDisplay.textContent = result;
+  playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+  computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
 }
 
 
