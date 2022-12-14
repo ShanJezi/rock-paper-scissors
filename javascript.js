@@ -1,28 +1,4 @@
 
-/* 
-Computer generates a random option to play against user
-    Generate random integer from 0 to 2
-    if 0 choose Rock
-    if 1 choose Paper
-    if 2 choose Scissors
-User is prompted to enter Rock, Paper, or Scissors
-    Users entry is made case insensitive
-    Verify user entered a valid option
-User option is compared to Computer option
-  Rock beats Scissors
-  Scissors beats Paper
-  Paper beats Rock
-  Computer and User pick same option results in a tie
-Winner is declared for that round
-Best of 5
-  Create game function
-  Keep track of player score and computer score
-  insert playRound function into game function
-  Repeat playRound for 5 rounds
-  compare final scores
-  Declare game winner
-
-*/
 
 function getComputerChoice() { // Randomly generate computer's choice
   let x = Math.floor(Math.random()* 3); // Generate random integer 0,1,2
@@ -35,21 +11,26 @@ function getComputerChoice() { // Randomly generate computer's choice
   }
 }
 
-
+let computerSelection;;
+let playerSelection;
 
 let playerScore = 0;
 let computerScore = 0;
 
-const computerSelection = getComputerChoice();
-let playerSelection;
-
-
 const buttons = document.querySelectorAll('button');
+
 buttons.forEach((button) => {
-  button.addEventListener('click', playRound((button.id).toUpperCase(), computerSelection));
+  button.addEventListener('click', () => {
+    console.log(button);
+  })
 })
 
-function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
+function game() { 
+  
+
+ // for (let i = 0; i < 5; i++) { // play 5 rounds
+
+ function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
   const playerWin = (`You win this round! ${playerSelection} beats ${computerSelection}!`);
   const playerLose = (`You lose this round! ${computerSelection} beats ${playerSelection}!`);
   const tie = (`This round is a tie! ${playerSelection} and ${computerSelection} are an even match!`);
@@ -76,12 +57,6 @@ function playRound(playerSelection, computerSelection) {// player selection and 
   return result;
 }
 
-
-function game() { 
-  
-
- // for (let i = 0; i < 5; i++) { // play 5 rounds
-
     console.log("Player: ", playerSelection);
     console.log("Computer: ",computerSelection);
 
@@ -95,7 +70,7 @@ function game() {
 
 //}
 
-game();
+//game();
 
 let finalResult; // compare final scores from the 5 rounds and declare a winner
 if (playerScore > computerScore) {
@@ -105,4 +80,4 @@ if (playerScore > computerScore) {
 } else {
   finalResult = `Tie game! You and the computer both won ${playerScore} rounds. So close!`
 }
-console.log(finalResult);
+//console.log(finalResult);
