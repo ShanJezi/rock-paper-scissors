@@ -19,6 +19,9 @@ let computerScore = 0;
 
 const buttons = document.querySelectorAll('button');
 
+const playerScoreDisplay = document.querySelector('.playerScore');
+const computerScoreDisplay = document.querySelector('.computerScore')
+
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     playerSelection = button.id.toUpperCase();
@@ -27,8 +30,8 @@ buttons.forEach((button) => {
     console.log(`Computer chooses ${computerSelection}`);
     let roundResult = playRound(playerSelection, computerSelection);
     console.log(roundResult)
-    console.log('Player: ', playerScore);
-    console.log('Computer: ', computerScore);
+    playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
   })
 })
 
@@ -62,7 +65,7 @@ function playRound(playerSelection, computerSelection) {// player selection and 
 
 
 
-let finalResult; // compare final scores from the 5 rounds and declare a winner
+let finalResult;
 if (playerScore > computerScore) {
   finalResult = `You won a total of ${playerScore} rounds to win the game! Take that computer!`
 } else if (playerScore < computerScore) {
