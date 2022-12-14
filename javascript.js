@@ -17,20 +17,29 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
+const container = document.querySelector('.container');
 const buttons = document.querySelectorAll('button');
+const rockBtn = document.querySelector('.rock');
 
 const playerChoiceDisplay = document.querySelector('.playerChoice');
 const computerChoiceDisplay = document.querySelector('.computerChoice');
 const roundResultDisplay = document.querySelector('.roundResult');
 const playerScoreDisplay = document.querySelector('.playerScore');
 const computerScoreDisplay = document.querySelector('.computerScore');
+const finalResultDisplay = document.querySelector('.finalResult');
+
+
 
 buttons.forEach((button) => {
-  button.addEventListener('click', () => {
+  const buttonHandler = () => {
     playerSelection = button.id.toUpperCase();
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
-  })
+    if (playerScore === 5 || computerScore === 5) {
+      declareWinner();
+    }
+  };
+  button.addEventListener('click', buttonHandler);
 })
 
 function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
@@ -65,13 +74,24 @@ function playRound(playerSelection, computerSelection) {// player selection and 
 }
 
 
-
-let finalResult;
-if (playerScore > computerScore) {
-  finalResult = `You won a total of ${playerScore} rounds to win the game! Take that computer!`
-} else if (playerScore < computerScore) {
-  finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`
-} else {
-  finalResult = `Tie game! You and the computer both won ${playerScore} rounds. So close!`
+function declareWinner() {
+  let finalResult;
+  if (playerScore > computerScore) {
+    finalResult = `You won a total of ${playerScore} rounds to win the game! Take that computer!`
+  } else if (playerScore < computerScore) {
+    finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`
+  } else {
+    finalResult = `Tie game! You and the computer both won ${playerScore} rounds. So close!`
+  }
+ finalResultDisplay.textContent = finalResult;
+ const playAgain = document.createElement('button');
+ playAgain.classList.add('playAgain');
+ playAgain.textContent = 'Play Again?';
+ finalResultDisplay.appendChild(playAgain); 
 }
-//console.log(finalResult);
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+
+}
