@@ -35,6 +35,7 @@ const playAgain = document.createElement('button');
 playAgain.classList.add('playAgain');
 playAgain.textContent = 'Play Again?';
 
+
 buttons.forEach((button) => {
   const buttonHandler = () => {
     playerSelection = button.id.toUpperCase();
@@ -81,18 +82,15 @@ function playRound(playerSelection, computerSelection) {// player selection and 
 
 function declareWinner() {
   let finalResult;
-  if (playerScore > computerScore) {
-    finalResult = `You won a total of ${playerScore} rounds to win the game! Take that computer!`
-  } else if (playerScore < computerScore) {
-    finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`
-  } else {
-    finalResult = `Tie game! You and the computer both won ${playerScore} rounds. So close!`
-  }
- finalResultDisplay.textContent = finalResult;
- container.appendChild(playAgain); 
- rockBtn.disabled = true;
- paperBtn.disabled = true;
- scissorsBtn.disabled = true;
+  finalResultDisplay.textContent = finalResult;
+  container.appendChild(playAgain); 
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+  
+  return playerScore > computerScore
+  ? (finalResult = `You won the game! The computer only won ${computerScore} rounds! Take that computer!`)
+  : (finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`)
 }
 
 playAgain.addEventListener('click', resetGame());
@@ -100,7 +98,7 @@ playAgain.addEventListener('click', resetGame());
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
-  playerChoiceDisplay.textContent = '';
+  playerChoiceDisplay.textContent = 'What will you choose?';
   computerChoiceDisplay.textContent = '';
   roundResultDisplay.textContent = '';
   playerScoreDisplay.textContent = '';
