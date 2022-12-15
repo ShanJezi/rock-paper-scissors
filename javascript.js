@@ -82,15 +82,15 @@ function playRound(playerSelection, computerSelection) {// player selection and 
 
 function declareWinner() {
   let finalResult;
+  playerScore > computerScore
+  ? (finalResult = `You won the game! The computer only won ${computerScore} rounds! Take that computer!`)
+  : (finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`)
+
   finalResultDisplay.textContent = finalResult;
   container.appendChild(playAgain); 
   rockBtn.disabled = true;
   paperBtn.disabled = true;
   scissorsBtn.disabled = true;
-  
-  return playerScore > computerScore
-  ? (finalResult = `You won the game! The computer only won ${computerScore} rounds! Take that computer!`)
-  : (finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`)
 }
 
 playAgain.addEventListener('click', resetGame());
