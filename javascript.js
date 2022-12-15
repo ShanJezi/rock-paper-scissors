@@ -19,7 +19,10 @@ let computerScore = 0;
 
 const container = document.querySelector('.container');
 const buttons = document.querySelectorAll('button');
-const rockBtn = document.querySelector('.rock');
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
 
 const playerChoiceDisplay = document.querySelector('.playerChoice');
 const computerChoiceDisplay = document.querySelector('.computerChoice');
@@ -28,7 +31,9 @@ const playerScoreDisplay = document.querySelector('.playerScore');
 const computerScoreDisplay = document.querySelector('.computerScore');
 const finalResultDisplay = document.querySelector('.finalResult');
 
-
+const playAgain = document.createElement('button');
+playAgain.classList.add('playAgain');
+playAgain.textContent = 'Play Again?';
 
 buttons.forEach((button) => {
   const buttonHandler = () => {
@@ -55,14 +60,14 @@ function playRound(playerSelection, computerSelection) {// player selection and 
     || playerSelection === "SCISSORS" && computerSelection === "PAPER"
     ) {
       result = playerWin;
-      playerScore++; // increase playerScore by 1
+      playerScore++;
   } else if (
     playerSelection === "ROCK" && computerSelection === "PAPER"
     || playerSelection === "PAPER" && computerSelection === "SCISSORS"
     || playerSelection === "SCISSORS" && computerSelection === "ROCK"
   ) {
     result = playerLose;
-    computerScore++; // increase computerScore by 1
+    computerScore++;
   } else {
     result = ('You did not enter a valid option. Try again!')
   }
@@ -84,14 +89,20 @@ function declareWinner() {
     finalResult = `Tie game! You and the computer both won ${playerScore} rounds. So close!`
   }
  finalResultDisplay.textContent = finalResult;
- const playAgain = document.createElement('button');
- playAgain.classList.add('playAgain');
- playAgain.textContent = 'Play Again?';
- finalResultDisplay.appendChild(playAgain); 
+ container.appendChild(playAgain); 
+ rockBtn.disabled = true;
+ paperBtn.disabled = true;
+ scissorsBtn.disabled = true;
 }
+
+playAgain.addEventListener('click', resetGame());
 
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
-
+  playerChoiceDisplay.textContent = '';
+  computerChoiceDisplay.textContent = '';
+  roundResultDisplay.textContent = '';
+  playerScoreDisplay.textContent = '';
+  computerScoreDisplay.textContent = '';
 }
