@@ -1,16 +1,4 @@
 
-
-function getComputerChoice() { // Randomly generate computer's choice
-  let x = Math.floor(Math.random()* 3); // Generate random integer 0,1,2
-  if (x === 0) { // Convert integer to string option
-    return("ROCK");
-  } else if (x === 1) {
-    return("PAPER");
-  } else {
-    return("SCISSORS");
-  }
-}
-
 let computerSelection;;
 let playerSelection;
 
@@ -34,6 +22,18 @@ const finalResultDisplay = document.querySelector('.finalResult');
 const playAgain = document.createElement('button');
 playAgain.classList.add('playAgain');
 playAgain.textContent = 'Play Again?';
+
+
+function getComputerChoice() { // Randomly generate computer's choice
+  let x = Math.floor(Math.random()* 3); // Generate random integer 0,1,2
+  if (x === 0) { // Convert integer to string option
+    return("ROCK");
+  } else if (x === 1) {
+    return("PAPER");
+  } else {
+    return("SCISSORS");
+  }
+}
 
 
 buttons.forEach((button) => {
@@ -98,7 +98,7 @@ playAgain.addEventListener('click', resetGame());
 function resetGame() {
   playerScore = 0;
   computerScore = 0;
-  playerChoiceDisplay.textContent = 'What will you choose?';
+  playerChoiceDisplay.textContent = '';
   computerChoiceDisplay.textContent = '';
   roundResultDisplay.textContent = '';
   playerScoreDisplay.textContent = '';
