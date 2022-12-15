@@ -93,14 +93,19 @@ function declareWinner() {
   scissorsBtn.disabled = true;
 }
 
-playAgain.addEventListener('click', resetGame());
+playAgain.addEventListener('click', resetGame)
 
 function resetGame() {
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
+  container.removeChild(playAgain);
   playerScore = 0;
   computerScore = 0;
   playerChoiceDisplay.textContent = '';
   computerChoiceDisplay.textContent = '';
   roundResultDisplay.textContent = '';
   playerScoreDisplay.textContent = '';
-  computerScoreDisplay.textContent = '';
+  computerScoreDisplay.textContent = ''
+  finalResultDisplay.textContent = '';
 }
