@@ -42,11 +42,12 @@ body {
 .weapon-choices {
   display: flex;
   margin-top: 1vh;
+  margin-bottom: 1vh; 
 }
 
 .weapon {
   height: 100px;
   width: 100px;
-  margin: 12px;
+  margin: 16px;
 }
 

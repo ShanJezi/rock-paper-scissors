@@ -24,18 +24,20 @@ playAgain.classList.add('playAgain');
 playAgain.textContent = 'Play Again?';
 
 
-function getComputerChoice() { // Randomly generate computer's choice
-  let x = Math.floor(Math.random()* 3); // Generate random integer 0,1,2
-  if (x === 0) { // Convert integer to string option
+
+function getComputerChoice() {
+  let x = Math.floor(Math.random()* 3);
+  if (x === 0) {
     return("ROCK");
   } else if (x === 1) {
     return("PAPER");
   } else {
     return("SCISSORS");
   }
-}
+};
 
 
+// Plays round when clicked
 buttons.forEach((button) => {
   const buttonHandler = () => {
     playerSelection = button.id.toUpperCase();
@@ -46,7 +48,8 @@ buttons.forEach((button) => {
     }
   };
   button.addEventListener('click', buttonHandler);
-})
+});
+
 
 function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
   const playerWin = (`You win this round! ${playerSelection} beats ${computerSelection}!`);
@@ -70,7 +73,7 @@ function playRound(playerSelection, computerSelection) {// player selection and 
     result = playerLose;
     computerScore++;
   } else {
-    result = ('You did not enter a valid option. Try again!')
+    result = ('Something went horribly wrong. Try again!')
   }
   playerChoiceDisplay.textContent = `Player chooses ${playerSelection}`;
   computerChoiceDisplay.textContent = `Computer chooses ${computerSelection}`;
