@@ -5,19 +5,19 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-const container = document.querySelector('.container');
+const container = document.querySelector('.weapon-choices');
 const buttons = document.querySelectorAll('button');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 
 
-const playerChoiceDisplay = document.querySelector('.playerChoice');
-const computerChoiceDisplay = document.querySelector('.computerChoice');
-const roundResultDisplay = document.querySelector('.roundResult');
-const playerScoreDisplay = document.querySelector('.playerScore');
-const computerScoreDisplay = document.querySelector('.computerScore');
-const finalResultDisplay = document.querySelector('.finalResult');
+const playerChoiceDisplay = document.querySelector('.player-choice');
+const computerChoiceDisplay = document.querySelector('.computer-choice');
+const roundResultDisplay = document.querySelector('.round-result');
+const playerScoreDisplay = document.querySelector('.player-score');
+const computerScoreDisplay = document.querySelector('.computer-score');
+const finalResultDisplay = document.querySelector('.final-result');
 
 const playAgain = document.createElement('button');
 playAgain.classList.add('playAgain');

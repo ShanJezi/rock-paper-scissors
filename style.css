@@ -1,3 +1,50 @@
-.header {
-  color: pink;
+body {
+  background-color: #ded0ff;
+  margin: 0;
+  font-family: Goldman, sans-serif;
+  color: #230074
 }
+
+.header {
+  background-color: #230074;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 15vh;
+}
+
+.title {
+  color: #ded0ff;
+  font-size: 4em;
+  font-weight: 800;
+}
+
+.content {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+
+.rules {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  height: 10vh;
+  font-size: 1.5em;
+}
+
+.choose {
+  font-size: 1.2em;
+}
+
+.weapon-choices {
+}
+
+.weapon {
+  height: 100px;
+  width: 100px;
+  margin: 12px;
+}
+

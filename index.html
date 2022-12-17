@@ -7,32 +7,55 @@
   <title>Rock Paper Scissors!</title>
   <script src="javascript.js" defer></script>
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Goldman">
 </head>
 <body>
 
-  <h1 class="header">Rock Paper Scissors</h1>
-  <h2>First to 5 wins!</h2>
-  <h3>Choose your weapon</h3>
-
-  <div class="container">
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+  <div class="header">
+    <h1 class="title">ROCK PAPER SCISSORS</h1>
   </div>
 
-  <div class="choices">
-    <div class="playerChoice"></div>
-    <div class="computerChoice"></div>
+
+  <div class="content">
+
+    <div class="rules">
+      <h2>Score 5 points to win the game!</h2>
+    </div>
+
+    <div class="choose">
+      <h3>Choose your weapon</h3>
+    </div>
+
+    <div class="weapon-choices">
+      <button class="weapon" id="rock"><img src="./icons/rock.png" height="100" width="100"></button>
+      <button class="weapon" id="paper">Paper</button>
+      <button class="weapon" id="scissors">Scissors</button>
+    </div>
+
+    <div class="choices">
+      <div class="player-choice"></div>
+      <div class="computer-choice"></div>
+    </div>
+
+    <div class="round-result"></div>
+
+    <div class="scores">
+      <div class="player-score"></div>
+      <div class="computer-score"></div>
+    </div>
+
+    <div class="final-result"></div>
+
   </div>
 
-  <div class="roundResult"></div>
 
-  <div class="scores">
-    <div class="playerScore"></div>
-    <div class="computerScore"></div>
+  <div class="footer">
+    <a href="https://www.flaticon.com/free-icons/rock" title="rock icons">Rock icons created by Freepik - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/paper" title="paper icons">Paper icons created by torskaya - Flaticon</a>
+    <a href="https://www.flaticon.com/free-icons/cut" title="cut icons">Cut icons created by Those Icons - Flaticon</a>
   </div>
 
-  <div class="finalResult"></div>
 
 </body>
 </html>
