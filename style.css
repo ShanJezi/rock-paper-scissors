@@ -6,12 +6,12 @@ body {
 }
 
 .header {
-  background-color: #230074;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
   height: 15vh;
+  background-color: #230074;
 }
 
 .title {
