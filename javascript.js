@@ -6,7 +6,7 @@ let playerScore = 0;
 let computerScore = 0;
 
 const container = document.querySelector('.weapon-choices');
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.weapon');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');

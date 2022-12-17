@@ -40,6 +40,8 @@ body {
 }
 
 .weapon-choices {
+  display: flex;
+  margin-top: 1vh;
 }
 
 .weapon {
