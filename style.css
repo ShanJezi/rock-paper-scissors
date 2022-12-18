@@ -49,5 +49,20 @@ body {
   height: 100px;
   width: 100px;
   margin: 16px;
+  transition: all .2s;
 }
 
+.hover {
+  background-color: #cdb9fc;
+  transform: scale(1.1);
+}
+
+.select {
+  background-color: #af92f5;
+  transform: scale(1.2);
+}
+
+.choices-container {
+  display: flex;
+  gap: 48px;
+}

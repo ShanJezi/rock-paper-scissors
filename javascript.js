@@ -12,8 +12,8 @@ const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 
 
-const playerChoiceDisplay = document.querySelector('.player-choice');
-const computerChoiceDisplay = document.querySelector('.computer-choice');
+const playerChoiceDisplay = document.querySelector('#player-choice');
+const computerChoiceDisplay = document.querySelector('#computer-choice');
 const roundResultDisplay = document.querySelector('.round-result');
 const playerScoreDisplay = document.querySelector('.player-score');
 const computerScoreDisplay = document.querySelector('.computer-score');
@@ -37,9 +37,16 @@ function getComputerChoice() {
 };
 
 
-// Plays round when clicked
+
 buttons.forEach((button) => {
-  const buttonHandler = () => {
+  button.addEventListener('mouseover', () => {
+    button.classList.add('hover');
+  });
+  button.addEventListener('mouseout', () => {
+    button.classList.remove('hover');
+  });
+  const buttonHandler = () => { // Plays round when clicked
+    button.classList.add('select');
     playerSelection = button.id.toUpperCase();
     computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
@@ -48,7 +55,14 @@ buttons.forEach((button) => {
     }
   };
   button.addEventListener('click', buttonHandler);
+  button.addEventListener('transitionend', removeTransition);
 });
+
+function removeTransition(e) {
+  if(e.propertyName !== 'transform') return;
+  this.classList.remove('select');
+}
+
 
 
 function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
