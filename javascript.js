@@ -1,6 +1,8 @@
 
 let computerSelection;;
 let playerSelection;
+let computerIcon;
+let playerIcon;
 
 let playerScore = 0;
 let computerScore = 0;
@@ -76,6 +78,14 @@ function removeTransition(e) {
   this.classList.remove('select');
 }
 
+function updateChoices (playerSelection, computerSelection) {
+  switch (playerSelection) {
+    case 'ROCK':
+      playerIcon = rockImg;
+      break;
+
+  }
+}
 
 
 function playRound(playerSelection, computerSelection) {// player selection and computer selection are compared and a winner is declared for that round, score is increased
@@ -103,8 +113,10 @@ function playRound(playerSelection, computerSelection) {// player selection and 
     result = ('Something went horribly wrong. Try again!')
   }
 
-  playerChoiceDisplay.textContent = `Player chooses ${playerSelection}`;
-  computerChoiceDisplay.textContent = `Computer chooses ${computerSelection}`;
+  updateChoices(playerSelection, computerSelection);
+
+  playerChoiceDisplay.textContent = `You chose ${playerSelection}`;
+  computerChoiceDisplay.textContent = `Computer chose ${computerSelection}`;
   roundResultDisplay.textContent = result;
   playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
   computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
