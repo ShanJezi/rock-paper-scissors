@@ -62,7 +62,33 @@ body {
   transform: scale(1.2);
 }
 
-.choices-container {
+.choices-container, 
+.scores-container {
   display: flex;
   gap: 48px;
 }
+
+.choice,
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 270px;
+}
+
+.round-result,
+.final-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.final-result {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+

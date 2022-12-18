@@ -5,23 +5,36 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-const container = document.querySelector('.weapon-choices');
+const container = document.querySelector('.final-result');
 const buttons = document.querySelectorAll('.weapon');
+const weaponChoices = document.querySelector('weapon-choices');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+
+const rockImg = document.createElement('img');
+rockImg.src = ("./icons/rock.png");
+rockImg.setAttribute('style', 'width: 100px; height: 100px;');
+const paperImg = document.createElement('img');
+paperImg.src = ("./icons/copy.png");
+paperImg.setAttribute('style', 'width: 100px; height: 100px;');
+const scissorsImg = document.createElement('img');
+scissorsImg.src = ("./icons/scissors.png");
+scissorsImg.setAttribute('style', 'width: 100px; height: 100px;');
+
 
 
 const playerChoiceDisplay = document.querySelector('#player-choice');
 const computerChoiceDisplay = document.querySelector('#computer-choice');
 const roundResultDisplay = document.querySelector('.round-result');
-const playerScoreDisplay = document.querySelector('.player-score');
-const computerScoreDisplay = document.querySelector('.computer-score');
+const playerScoreDisplay = document.querySelector('#player-score');
+const computerScoreDisplay = document.querySelector('#computer-score');
 const finalResultDisplay = document.querySelector('.final-result');
 
 const playAgain = document.createElement('button');
 playAgain.classList.add('playAgain');
 playAgain.textContent = 'Play Again?';
+
 
 
 
@@ -89,6 +102,7 @@ function playRound(playerSelection, computerSelection) {// player selection and 
   } else {
     result = ('Something went horribly wrong. Try again!')
   }
+
   playerChoiceDisplay.textContent = `Player chooses ${playerSelection}`;
   computerChoiceDisplay.textContent = `Computer chooses ${computerSelection}`;
   roundResultDisplay.textContent = result;
@@ -104,18 +118,12 @@ function declareWinner() {
   : (finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`)
 
   finalResultDisplay.textContent = finalResult;
-  container.appendChild(playAgain); 
-  rockBtn.disabled = true;
-  paperBtn.disabled = true;
-  scissorsBtn.disabled = true;
+  container.appendChild(playAgain);
 }
 
 playAgain.addEventListener('click', resetGame)
 
 function resetGame() {
-  rockBtn.disabled = false;
-  paperBtn.disabled = false;
-  scissorsBtn.disabled = false;
   container.removeChild(playAgain);
   playerScore = 0;
   computerScore = 0;
