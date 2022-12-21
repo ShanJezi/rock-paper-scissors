@@ -36,6 +36,7 @@ body {
   align-items: center;
   height: 8vh;
   font-size: 1.5em;
+  margin-bottom: 5vh;
 }
 
 .choose {
@@ -43,7 +44,7 @@ body {
 }
 
 .weapon-choices {
-  height: 160px;
+  height: 20vh;
   display: flex;
   margin-top: 1vh;
   margin-bottom: 1vh; 
@@ -93,6 +94,7 @@ body {
 
 .round-result {
   font-size: 1.5em;
+  margin-bottom: 10vh;
 }
 
 .final-result {
