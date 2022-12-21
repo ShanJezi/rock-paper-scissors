@@ -155,4 +155,7 @@ function resetGame() {
   roundResultDisplay.textContent = '';
   playerScoreDisplay.textContent = '';
   computerScoreDisplay.textContent = '';
+  rockBtn.classList.remove('hover', 'select');
+  paperBtn.classList.remove('hover', 'select');
+  scissorsBtn.classList.remove('hover', 'select');
 }
