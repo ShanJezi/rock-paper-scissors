@@ -7,9 +7,10 @@ let playerIcon;
 let playerScore = 0;
 let computerScore = 0;
 
+const content = document.querySelector('.content');
 const container = document.querySelector('.final-result');
 const buttons = document.querySelectorAll('.weapon');
-const weaponChoices = document.querySelector('weapon-choices');
+const weaponChoices = document.querySelector('.weapon-choices');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
@@ -34,8 +35,11 @@ const computerScoreDisplay = document.querySelector('#computer-score');
 const finalResultDisplay = document.querySelector('.final-result');
 
 const playAgain = document.createElement('button');
-playAgain.classList.add('playAgain');
+playAgain.classList.add('play-again');
 playAgain.textContent = 'Play Again?';
+
+const resetText = "Choose your weapon"
+
 
 
 
@@ -130,19 +134,25 @@ function declareWinner() {
   : (finalResult = `You lose! How could you only win ${playerScore} rounds? The computer is far superior.`)
 
   finalResultDisplay.textContent = finalResult;
-  container.appendChild(playAgain);
+  weaponChoices.removeChild(rockBtn);
+  weaponChoices.removeChild(paperBtn);
+  weaponChoices.removeChild(scissorsBtn);
+  weaponChoices.appendChild(playAgain);
 }
 
 playAgain.addEventListener('click', resetGame)
 
 function resetGame() {
-  container.removeChild(playAgain);
+  finalResultDisplay.textContent = resetText;
+  weaponChoices.removeChild(playAgain);
+  weaponChoices.appendChild(rockBtn);
+  weaponChoices.appendChild(paperBtn);
+  weaponChoices.appendChild(scissorsBtn);
   playerScore = 0;
   computerScore = 0;
   playerChoiceDisplay.textContent = '';
   computerChoiceDisplay.textContent = '';
   roundResultDisplay.textContent = '';
   playerScoreDisplay.textContent = '';
-  computerScoreDisplay.textContent = ''
-  finalResultDisplay.textContent = '';
+  computerScoreDisplay.textContent = '';
 }

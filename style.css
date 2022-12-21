@@ -34,8 +34,7 @@ body {
 .rules {
   display: flex;
   align-items: center;
-  margin-top: 2vh;
-  height: 10vh;
+  height: 8vh;
   font-size: 1.5em;
 }
 
@@ -44,6 +43,7 @@ body {
 }
 
 .weapon-choices {
+  height: 160px;
   display: flex;
   margin-top: 1vh;
   margin-bottom: 1vh; 
@@ -99,6 +99,7 @@ body {
   font-size: 1.75rem;
   display: flex;
   flex-direction: column;
+  margin: 2vh;
 }
 
 .footer {
@@ -115,4 +116,15 @@ body {
   font-size: 1.5rem;
   margin-top: 8px;
   margin-bottom: 4px;
+}
+
+.play-again {
+  background-color: #230074;
+  color: #ded0ff;
+  width: 200px;
+  height: 75px;
+  font-size: 1em;
+  font-family: Goldman, sans-serif;
+  border-radius: 8px;
+  margin: 12px;
 }
